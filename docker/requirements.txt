@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pymysql
+huggingface-hub
+langchain-core
+requests
