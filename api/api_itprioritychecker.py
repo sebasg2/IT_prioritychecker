@@ -36,9 +36,9 @@ def call_llm(inference_client: InferenceClient, prompt: str):
 
 def insert_into_db(user_id: int, prompt: str, priority_value: str):
     # Configuración de la conexión a la base de datos
-    username = "admin"
-    password = "sg1515eg"
-    host = "database-2.cbm2c84euy0d.eu-north-1.rds.amazonaws.com"
+    username = "youruser"
+    password = "yourpassword"
+    host = "yourhost"
     port = 3306
     database = "it_prioritydb"
 
