@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priority Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px;
+            box-sizing: border-box;
+        }
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+            max-width: 50%;
+            box-sizing: border-box;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        header {
+            margin-bottom: 20px;
+        }
+        .description {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .description h2 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        .description p {
+            line-height: 1.5;
+        }
+        form {
+            width: 100%;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f1ff;
+            border: 1px solid #d1e7ff;
+            border-radius: 8px;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="https://i.pinimg.com/736x/b0/48/13/b04813abe04ead5e64533d40b688bc8d.jpg" alt="Decorative Image">
+        </div>
+        <div class="content">
+            <header>
+                <h1>Priority Checker</h1>
+            </header>
+            <main>
+                <div class="description">
+                    <h2>About This App</h2>
+                    <p>This application predicts the priority of IT incidents based on their descriptions. By analyzing the input, it categorizes the incident into one of three priority levels: low, medium, or high. This helps IT teams to quickly assess and prioritize incidents, ensuring that critical issues are addressed promptly and efficiently, ultimately improving response times and operational efficiency.</p>
+                </div>
+                <form id="priority-form">
+                    <label for="prompt">Enter incident description:</label>
+                    <textarea id="prompt" name="prompt" rows="4" required></textarea>
+                    <br>
+                    <button type="submit">Check Priority</button>
+                </form>
+                <div id="result">
+                    <h2>Priority Result:</h2>
+                    <p id="priority-output"></p>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        document.getElementById('priority-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let prompt = document.getElementById('prompt').value;
+            
+            // Make a request to the /priority endpoint
+            fetch(`/priority?prompt=${encodeURIComponent(prompt)}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Display the priority result
+                    document.getElementById('priority-output').innerText = data.priority;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
