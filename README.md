@@ -3,6 +3,7 @@
 ## Project Description
 
 This project is a web application that allows users to check the priority of IT incidents through automatic classification into three levels: low, medium, and high. The application uses the Microsoft Phi-3-mini-4k-instruct language model hosted on Hugging Face to analyze incident descriptions and determine their priority. The results were previously stored in an AWS-hosted MySQL database. **However, the AWS database is currently down, and the application is no longer operational.**
+<br>
 
 ![It_priority_checker](https://github.com/user-attachments/assets/20a7f18d-11b7-460f-88fb-6ea49b3834de)
 
